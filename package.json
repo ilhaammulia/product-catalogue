@@ -22,6 +22,7 @@
         "@fancyapps/ui": "^5.0.28",
         "@heroicons/vue": "^2.0.18",
         "flowbite": "^2.2.0",
+        "lodash": "^4.17.21",
         "notiflix": "^3.2.6",
         "oh-vue-icons": "^1.0.0-rc3",
         "primevue": "^3.42.0",

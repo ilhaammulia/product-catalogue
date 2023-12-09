@@ -63,12 +63,14 @@ export default {
         message: this.form.message,
       };
       if (this.product) {
-        console.log(this.product);
         request.related_id = this.product.id
       }
 
+      
+
       axios.post(route('ticket.store'), request).then((response) => {
         if (response.data.status == 'success') {
+          this.$emit('submitted');
           Notify.success('Your request has been submitted.');
           this.form.reset();
           this.errors = {}

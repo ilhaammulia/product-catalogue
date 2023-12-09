@@ -8,11 +8,11 @@
             our newsletter to get update.</h1>
 
           <div class="flex flex-col mx-auto mt-6 space-y-3 md:space-y-0 md:flex-row">
-            <input id="email" type="text"
+            <input id="email" type="text" v-model="email"
               class="px-4 py-2 text-white bg-transparent border rounded-sm focus:border-gray-500 focus:ring-gray-500"
               placeholder="Email Address">
 
-            <button
+            <button @click="subscribeEmail"
               class="w-full px-6 py-2.5 text-sm font-medium tracking-wider text-white transition-colors duration-300 transform md:w-auto md:mx-4 focus:outline-none bg-gold-600 rounded-sm hover:bg-gold-700 focus:ring focus:ring-gray-100 focus:ring-opacity-80">
               Subscribe
             </button>
@@ -53,11 +53,43 @@
         </a>
 
         <div class="flex justify-between items-center">
-          <p class="text-gray-300 font-medium">CopyRight © 2017 - 2023 brand.com. All Rights Reserved.</p>
+          <p class="text-gray-300 font-medium">CopyRight © 2023 brand.com. All Rights Reserved.</p>
       </div>
     </div>
   </div>
 </footer>
 </template>
 
-<script></script>
+<script>
+import { Notify } from 'notiflix';
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      email: null,
+    }
+  },
+  methods: {
+    subscribeEmail() {
+      const request = {
+        name: 'New Subscriber',
+        email: this.email,
+        message: 'I have subscribed to your newsletter. Please notify me in the future.',
+      };
+
+      axios.post(route('ticket.store'), request).then((response) => {
+        if (response.data.status == 'success') {
+          Notify.success('You have successfully subscribed.');
+          this.email = null;
+        } else {
+          Notify.failure('Error occured. Try again later.');
+        }
+      }).catch((response) => {
+        Notify.failure('Error occured. Try again.');
+        this.errors = response.response.data.errors
+      });
+    }
+  }
+}
+</script>

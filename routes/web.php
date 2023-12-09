@@ -32,6 +32,7 @@ Route::get('/', function () {
 
 Route::prefix('products')->group(function () {
     Route::get('/', [LandingController::class, 'products'])->name('landing.products');
+    Route::post('/', [LandingController::class, 'products'])->name('landing.products.filter');
     Route::get('/{slug}', [LandingController::class, 'product_detail'])->name('landing.product.detail');
 });
 
@@ -52,13 +53,17 @@ Route::middleware([
 ])->group(function () {
     Route::get('/admin/dashboard', [LandingController::class, 'dashboard'])->name('admin.dashboard');
 
+    Route::prefix('/admin/resources')->group(function () {
+        Route::get('/products/new', [ProductController::class, 'create'])->name('admin.product.add');
+        Route::post('/products/categories', [CategoryController::class, 'store'])->name('admin.product.category.add');
+    });
+
     Route::prefix('/admin/products')->group(function () {
         Route::get('/', [ProductController::class, 'index'])->name('admin.product');
         Route::post('/', [ProductController::class, 'store'])->name('admin.product.store');
         Route::get('/{id}', [ProductController::class, 'edit'])->name('admin.product.edit');
+        Route::delete('/{id}', [ProductController::class, 'destroy'])->name('admin.product.delete');
         Route::post('/{product}', [ProductController::class, 'update'])->name('admin.product.update');
-        Route::get('/new', [ProductController::class, 'create'])->name('admin.product.add');
-        Route::post('/categories', [CategoryController::class, 'store'])->name('admin.product.category.add');
     });
 
     Route::prefix('/admin/tickets')->group(function () {

@@ -46,6 +46,7 @@
         <Column field="created_at" header="Created At" sortable></Column>
         <Column field="action" header="Action" class="px-8 py-6">
           <template #body="props">
+            <ConfirmDialog />
             <button @click="handleDeleteTicket(props.data)" class="flex justify-center p-2 bg-red-600 rounded-lg hover:bg-red-700 focus:bg-red-700">
               <TrashIcon class="w-5 h-5 text-white font-bold" />
             </button>
@@ -65,6 +66,8 @@ import { TrashIcon } from '@heroicons/vue/24/solid';
 import { Notify } from 'notiflix';
 
 import { FilterMatchMode } from 'primevue/api';
+import ConfirmDialog from 'primevue/confirmdialog';
+import { useConfirm } from "primevue/useconfirm";
 
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
@@ -77,7 +80,7 @@ export default {
     AppLayout,
     SmallCard,
     Head, MagnifyingGlassIcon, EnvelopeIcon, TrashIcon,
-    DataTable, Column, InputText,
+    DataTable, Column, InputText, ConfirmDialog
   },
   props: {
     tickets: {
@@ -90,11 +93,28 @@ export default {
       filters: {
         global: { value: null, matchMode: FilterMatchMode.CONTAINS },
       },
+      confirm: useConfirm()
     }
   },
   methods: {
     handleDeleteTicket(ticket) {
-      this.$inertia.delete(route('admin.ticket.delete', { id: ticket.id }), {
+      this.confirm.require({
+          message: 'Are you sure you want to proceed?',
+          header: 'Confirmation',
+          accept: () => {
+              this.deleteTicket(ticket.id);
+          },
+          reject: () => {
+            this.confirm.close();
+          },
+          onHide: () => {
+            this.confirm.close();
+          }
+      }); 
+    },
+    deleteTicket(id) {
+      this.confirm.close();
+      return this.$inertia.delete(route('admin.ticket.delete', { id }), {
         onSuccess: () => {
           Notify.success('The ticket has been deleted.');
         },

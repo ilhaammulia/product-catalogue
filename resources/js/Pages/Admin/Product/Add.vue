@@ -95,7 +95,9 @@
           <MultiSelect v-model="form.categories" :options="categories" filter optionLabel="name" placeholder="Categories" :maxSelectedLabels="5"
             class="w-full md:w-20rem rounded-md text-gray-300 text-sm bg-dark-primary border border-gray-50/10 focus:border-gray-500 focus:ring-gray-500 disabled:opacity-50 disabled:pointer-events-none" />
           <CategoryModal>
-            <p class="text-gray-300 text-sm mt-2 bg-gold-600 hover:bg-gold-700 focus:bg-gold-700 px-6 py-1 rounded-md font-semibold">Add</p>
+            <p class="text-gray-300 text-sm mt-2 bg-gold-600 hover:bg-gold-700 focus:bg-gold-700 px-6 py-1 rounded-md font-semibold">
+              <PlusIcon class="w-4 h-4" />
+            </p>
           </CategoryModal>
         </div>
         <div class="mt-4">
@@ -166,7 +168,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
 import AdminSidebar from '@/Components/AdminSidebar.vue';
 import CategoryModal from '@/Components/CategoryModal.vue';
 import { Head, useForm, } from '@inertiajs/vue3';
-import { TrashIcon, CubeIcon, LinkIcon, MinusIcon, PlusIcon, ArrowLeftIcon } from '@heroicons/vue/20/solid';
+import { TrashIcon, CubeIcon, LinkIcon, MinusIcon, PlusIcon, ArrowLeftIcon, } from '@heroicons/vue/20/solid';
 
 import ScrollPanel from 'primevue/scrollpanel';
 import MultiSelect from 'primevue/multiselect';

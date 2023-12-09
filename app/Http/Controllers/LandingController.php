@@ -8,29 +8,29 @@ use Illuminate\Support\Str;
 use Inertia\Inertia;
 use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
-
-use Illuminate\Support\Facades\Http;
-use App\Models\ExchangeRate;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LandingController extends Controller
 {
-    public function products()
+    public function products(Request $request)
     {
         $brands = Brand::all();
         $categories = Category::all();
 
-        $products = Product::all()->map(function ($product) {
-            $image = $product->attachments()->where('type', 'image')->first();
-            return [
-                'id' => $product->id,
-                'name' => $product->name,
-                'description' => $product->description,
-                'slug' => $product->slug,
-                'price' => $product->price,
-                'image' => $image ? Storage::url($image->path) : '/assets/img/product-placeholder.png'
-            ];
-        });
-
+        $products = Product::filter()
+            ->get()
+            ->map(function ($product) {
+                $image = $product->attachments()->where('type', 'image')->first();
+                return [
+                    'id' => $product->id,
+                    'name' => $product->name,
+                    'description' => $product->description,
+                    'slug' => $product->slug,
+                    'price' => $product->price,
+                    'image' => $image ? Storage::url($image->path) : '/assets/img/product-placeholder.png'
+                ];
+            });
         return Inertia::render('Landing/Products', [
             'brands' => $brands,
             'categories' => $categories,
@@ -63,6 +63,7 @@ class LandingController extends Controller
                     ];
                 }),
             ] : null,
+            'related_products' => $product->related_products(),
         ]);
     }
 
@@ -84,5 +85,31 @@ class LandingController extends Controller
     public function dashboard()
     {
         return Inertia::render('Admin/Dashboard');
+    }
+
+    public function fetch(Request $request)
+    {
+        $brands = Brand::all();
+        $categories = Category::all();
+
+        $products = Product::filter()
+            ->get()
+            ->map(function ($product) {
+                $image = $product->attachments()->where('type', 'image')->first();
+                return [
+                    'id' => $product->id,
+                    'name' => $product->name,
+                    'description' => $product->description,
+                    'slug' => $product->slug,
+                    'price' => $product->price,
+                    'image' => $image ? Storage::url($image->path) : '/assets/img/product-placeholder.png'
+                ];
+            });
+
+        return redirect()->to(route('landing.products'))->with([
+            'brands' => $brands,
+            'categories' => $categories,
+            'products' => $products,
+        ]);
     }
 }

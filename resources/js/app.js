@@ -6,6 +6,7 @@ import "@fancyapps/ui/dist/carousel/carousel.css";
 import "@fancyapps/ui/dist/carousel/carousel.thumbs.css";
 
 import PrimeVue from "primevue/config";
+import ConfirmationService from "primevue/confirmationservice";
 
 import { createApp, h } from "vue";
 import { createInertiaApp } from "@inertiajs/vue3";
@@ -34,6 +35,7 @@ createInertiaApp({
             .use(ZiggyVue)
             .use(store)
             .use(PrimeVue)
+            .use(ConfirmationService)
             .component("v-icon", OhVueIcon)
             .mount(el);
     },

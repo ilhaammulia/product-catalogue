@@ -8,7 +8,9 @@
           <span class="text-lg font-semibold">Products</span>
         </div>
         <div class="flex justify-end items-center gap-4">
-          <a :href="route('admin.product.add')" class="px-6 py-2 bg-gold-600 hover:bg-gold-700 focus:bg-gold-700 text-gray-300 rounded-md">Add Product</a>
+          <a :href="route('admin.product.add')" class="px-4 lg:px-6 py-2 bg-gold-600 hover:bg-gold-700 focus:bg-gold-700 text-gray-300 rounded-md">
+            <PlusIcon class="w-4 h-4 text-white font-bold" />
+          </a>
           <span class="p-input-icon-left">
             <MagnifyingGlassIcon class="w-4 h-4" />
             <InputText v-model="filters['global'].value" placeholder="Search"
@@ -25,7 +27,7 @@
     </Column>
     <Column field="name" header="Name" sortable class="px-8 py-6">
       <template #body="props">
-        <a v-if="props.data.link" class="text-gray-300 text-sm font-medium rounded-full underline"
+        <a v-if="props.data.link" class="text-gray-300 text-sm font-medium rounded-full underline truncate"
           :href="route('landing.product.detail', {slug: props.data.slug})">{{ props.data.name }}</a>
         <p v-else>{{ props.data.name }}</p>
       </template>
@@ -45,7 +47,7 @@
     <Column field="created_at" header="Created At" sortable></Column>
     <Column field="action" header="Action" class="px-8 py-6 flex justify-center items-center gap-2">
       <template #body="props">
-          <a :href="props.data.link" target="_blank"
+          <a v-if="props.data.link" :href="props.data.link" target="_blank"
             class="flex justify-center p-2 bg-green-600 rounded-lg hover:bg-green-700 focus:bg-green-700">
             <LinkIcon class="w-5 h-5 text-white font-bold" />
           </a>
@@ -53,7 +55,8 @@
             class="flex justify-center p-2 bg-blue-600 rounded-lg hover:bg-blue-700 focus:bg-blue-700">
             <PencilIcon class="w-5 h-5 text-white font-bold" />
           </a>
-          <button
+          <ConfirmDialog></ConfirmDialog>
+          <button @click="handleDelete(props.data)"
             class="flex justify-center p-2 bg-red-600 rounded-lg hover:bg-red-700 focus:bg-red-700">
             <TrashIcon class="w-5 h-5 text-white font-bold" />
           </button>
@@ -65,17 +68,20 @@
 <script>
 import { FilterMatchMode } from 'primevue/api';
 
+import ConfirmDialog from 'primevue/confirmdialog';
+import { useConfirm } from "primevue/useconfirm";
+
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import InputText from 'primevue/inputtext';
 import "primevue/resources/themes/mdc-dark-deeppurple/theme.css";
 
-import { MagnifyingGlassIcon, TrashIcon, LinkIcon, PencilIcon } from '@heroicons/vue/24/outline';
+import { MagnifyingGlassIcon, TrashIcon, LinkIcon, PencilIcon, PlusIcon } from '@heroicons/vue/24/outline';
 
 export default {
   components: {
-    DataTable, Column, InputText,
-    MagnifyingGlassIcon, TrashIcon, LinkIcon, PencilIcon
+    DataTable, Column, InputText, ConfirmDialog,
+    MagnifyingGlassIcon, TrashIcon, LinkIcon, PencilIcon, PlusIcon
   },
   props: {
     products: {
@@ -88,6 +94,28 @@ export default {
       filters: {
         global: { value: null, matchMode: FilterMatchMode.CONTAINS },
       },
+      confirm: useConfirm()
+    }
+  },
+  methods: {
+    handleDelete(product) {
+      this.confirm.require({
+          message: 'Are you sure you want to proceed?',
+          header: 'Confirmation',
+          accept: () => {
+              this.deleteProduct(product.id);
+          },
+          reject: () => {
+            this.confirm.close();
+          },
+          onHide: () => {
+            this.confirm.close();
+          }
+      }); 
+    },
+    deleteProduct(id) {
+      this.confirm.close();
+      return this.$inertia.delete(route('admin.product.delete', {id}));
     }
   },
 }

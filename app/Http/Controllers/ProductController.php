@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductRequest;
-use App\Http\Requests\UpdateProductRequest;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductAttachment;
 use App\Models\ProductCategory;
 use Carbon\Carbon;
-use GuzzleHttp\Psr7\Request;
-use Illuminate\Contracts\Cache\Store;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Illuminate\Support\Str;
@@ -59,8 +57,10 @@ class ProductController extends Controller
      */
     public function create()
     {
+
         $categories = Category::get();
         $brands = Brand::get();
+
 
         return Inertia::render('Admin/Product/Add', [
             'categories' => $categories,
@@ -75,7 +75,7 @@ class ProductController extends Controller
     {
         DB::beginTransaction();
         try {
-            if (is_string($request->brand_id)) {
+            if (!is_numeric($request->brand_id)) {
                 $brand = Brand::create(['name' => $request->brand_id]);
             } else {
                 $brand = ['id' => $request->brand_id];
@@ -90,7 +90,7 @@ class ProductController extends Controller
                 'stock' => $request->stock,
                 'stock_status' => $request->stock_status,
                 'link' => $request->link,
-                'brand_id' => $brand->id,
+                'brand_id' => $brand['id'],
             ]);
 
 
@@ -119,14 +119,6 @@ class ProductController extends Controller
         }
 
         return redirect()->to(route('admin.product'));
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Product $product)
-    {
-        //
     }
 
     /**
@@ -195,7 +187,7 @@ class ProductController extends Controller
 
             if ($request->deleted_files) {
                 foreach ($request->deleted_files as $deleted) {
-                    Storage::delete($deleted['path']);
+                    Storage::disk('public')->delete($deleted['path']);
                     $find = ProductAttachment::find($deleted['id']);
                     $find->delete();
                 }
@@ -225,7 +217,6 @@ class ProductController extends Controller
             DB::commit();
         } catch (\Exception $th) {
             DB::rollBack();
-            dd($th);
             return redirect()->to(route('admin.product.edit', ['id' => $product->id]));
         }
 
@@ -235,8 +226,27 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+        if (!$product) {
+            return redirect()->to(route('admin.product'));
+        }
+        DB::beginTransaction();
+        try {
+            foreach ($product->attachments as $file) {
+                Storage::disk('public')->delete($file->path);
+                $find = ProductAttachment::find($file->id);
+                $find->delete();
+            }
+
+            $product->delete();
+            DB::commit();
+        } catch (\Exception $th) {
+            DB::rollBack();
+            dd($th);
+        }
+
+        return redirect()->to(route('admin.product'));
     }
 }

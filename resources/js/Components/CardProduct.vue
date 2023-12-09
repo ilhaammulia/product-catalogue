@@ -1,5 +1,5 @@
 <template>
-  <a :href="route('landing.product.detail', product.slug)"
+  <a :href="route('landing.product.detail', {slug: product.slug})"
     class="relative flex flex-col text-gray-300  bg-dark-secondary shadow-md w-full rounded-xl bg-clip-border">
     <div class="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white h-60 rounded-xl bg-clip-border">
       <img
@@ -18,7 +18,7 @@
     </div>
     <div class="p-6 pt-0">
       <p class="text-sm font-medium text-gray-300">
-        Ƀ {{ ((product.price / 100) * $store.state.currency.value).toFixed(4) }} {{ $store.state.currency.text }}
+        Ƀ {{ ((product.price) * $store.state.currency.value).toFixed(4) }} {{ $store.state.currency.text }}
       </p>
     </div>
   </a>
