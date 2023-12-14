@@ -2,7 +2,7 @@
   <button data-modal-target="currency-modal" data-modal-toggle="currency-modal"
     class="flex justify-center items-center gap-2 py-2 px-6 rounded-md text-gray-100 font-semibold bg-gold-600 hover:bg-gold-700"
     type="button" @click="toggleModal">
-    <img :src="`https://s3-symbol-logo.tradingview.com/crypto/XTVC${$store.state.currency.text}.svg`" class="rounded-full" />
+    <v-icon :name="`ci-color-${$store.state.currency.text.toLowerCase()}`" />
     <p>{{ $store.state.currency.text }}</p>
   </button>
 
@@ -31,7 +31,7 @@
             <div v-for="currency in $page.props.rates" :key="currency" @click="changeCurrency(currency)"
               class="flex justify-center items-center gap-2 py-2 px-2 md:px-6 rounded-lg cursor-pointer hover:bg-gold-700">
               <div class="flex justify-between items-center w-full gap-4">
-                <img :src="`https://s3-symbol-logo.tradingview.com/crypto/XTVC${currency.text}.svg`" class="rounded-full" />
+                <v-icon :name="`ci-color-${currency.text.toLowerCase()}`" />
                 <span class="text-white font-semibold">{{ currency.text }}</span>
               </div>
             </div>

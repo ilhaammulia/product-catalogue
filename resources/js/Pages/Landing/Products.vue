@@ -38,11 +38,6 @@ import OffCanvasFilter from '@/Components/OffCanvasFilter.vue';
 import { MinusIcon, MagnifyingGlassIcon } from '@heroicons/vue/20/solid';
 import { Head, useForm } from '@inertiajs/vue3';
 
-import pickBy from 'lodash/pickBy';
-
-import InfiniteLoading from "v3-infinite-loading";
-import "v3-infinite-loading/lib/style.css";
-
 import DataView from 'primevue/dataview';
 
 export default {
@@ -55,7 +50,6 @@ export default {
     SelectTag,
     MinusIcon,
     MagnifyingGlassIcon,
-    InfiniteLoading,
     DataView,
   },
   props: {

@@ -8,7 +8,7 @@
         <ChevronUpIcon class="rotate-90 hs-accordion-active:rotate-0 w-4 h-4" />
         Categories
       </button>
-      <div id="filter-category-content"
+      <div v-if="data.categories.length" id="filter-category-content"
         class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300"
         aria-labelledby="filter-category">
         <div class="flex flex-col gap-2 pb-4 px-5 max-h-48 overflow-y-auto">
@@ -30,7 +30,7 @@
         <ChevronUpIcon class="rotate-90 hs-accordion-active:rotate-0 w-4 h-4" />
         Brands
       </button>
-      <div id="filter-brand-content" class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300"
+      <div v-if="data.brands.length" id="filter-brand-content" class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300"
         aria-labelledby="filter-brand">
         <div class="flex flex-col gap-2 pb-4 px-5 max-h-48 overflow-y-auto">
           <div v-for="(brand, index) in data.brands" :key="brand" class="flex">

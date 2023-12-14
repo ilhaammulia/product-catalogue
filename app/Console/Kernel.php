@@ -27,7 +27,9 @@ class Kernel extends ConsoleKernel
                     ['value' => $value]
                 );
             }
-        })->daily();
+        })
+            ->daily()
+            ->appendOutputTo(storage_path('logs/scheduler.log'));
     }
 
     /**

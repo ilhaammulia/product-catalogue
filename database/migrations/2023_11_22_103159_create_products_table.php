@@ -24,7 +24,6 @@ return new class extends Migration
             $table->unsignedBigInteger('brand_id')->unsigned()->nullable();
 
             $table->foreign('brand_id')->references('id')->on('brands')->onDelete('set null');
-            $table->createIndex('products_slug_index', ['slug']);
 
             $table->timestamps();
         });

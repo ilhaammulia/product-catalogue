@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="f-carousel h-96 overflow-hidden" id="myCarousel">
-      <div class="f-carousel__slide h-96 rounded-lg" v-for="file in attachments" :key="file" :data-thumb-src="file.type == 'image' ? file.src : '/assets/img/video-placeholder.jpg'">
-        <img v-if="file.type == 'image'" width="640" height="480" alt="product item" data-fancybox="gallery" :data-lazy-src="file.src" />
-        <a v-else :href="file.src" data-fancybox="gallery"><img width="640" height="480" alt="video thumbnail" data-lazy-src="/assets/img/video-placeholder.jpg" /></a>
+    <div class="f-carousel overflow-hidden bg-dark-secondary" id="myCarousel">
+      <div class="f-carousel__slide rounded-lg w-full object-cover object-center border border-gray-50/10" v-for="file in attachments" :key="file" :data-thumb-src="file.type == 'image' ? file.src : '/assets/img/video-placeholder.jpg'">
+        <img v-if="file.type == 'image'" class="xl:p-8 " alt="product item" data-fancybox="gallery" :data-lazy-src="file.src" />
+        <a v-else :href="file.src" data-fancybox="gallery"><img alt="video thumbnail" data-lazy-src="/assets/img/video-placeholder.jpg" /></a>
       </div>
     </div>
   </div>
@@ -53,7 +53,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 #myCarousel {
   max-width: 640px;
   margin: 0 auto;
@@ -63,6 +63,10 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: none;
 }
+
+.f-carousel__thumbs {
+  margin-top: 12px !important;
+}
+
 </style>

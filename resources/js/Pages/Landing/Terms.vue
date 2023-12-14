@@ -13,56 +13,43 @@
         <div class="md:max-w-screen-sm lg:max-w-[992px] px-4 sm:px-6 lg:px-8 pb-12 md:pt-6 sm:pb-20 mx-auto">
           <div class="grid gap-4 md:gap-8">
             <div>
-              <h2 class="text-lg sm:text-xl font-semibold mb-2 text-gold-600">General Terms</h2>
+              <h2 class="text-lg sm:text-xl font-semibold mb-2 text-gold-600">Acceptance and Use of Services</h2>
 
-              <p class="mb-5 text-gray-400">By accessing and placing an order with Preline, you confirm that you are
-                in agreement with and bound by the terms and conditions contained in the Terms Of Use outlined below.
-                These terms apply to the entire website and any email or other type of communication between you and
-                Preline.</p>
+              <p class="mb-5 text-gray-400">Welcome to Coinluxe! By using our platform, you agree to abide by these Terms of Service. Your access and usage of Coinluxe signify your acceptance of these terms.</p>
 
-              <p class="mb-5 text-gray-400">Under no circumstances shall Preline team be liable for any direct,
-                indirect, special, incidental or consequential damages, including, but not limited to, loss of data or
-                profit, arising out of the use, or the inability to use, the materials on this site, even if Preline team
-                or an authorized representative has been advised of the possibility of such damages. If your use of
-                materials from this site results in the need for servicing, repair or correction of equipment or data, you
-                assume any costs thereof.</p>
-
-              <p class="text-gray-400">Preline will not be responsible for any outcome that may occur during the
-                course of usage of our resources. We reserve the rights to change prices and revise the resources usage
-                policy in any moment.</p>
+              <p class="mb-5 text-gray-400">It's essential to comply with all regulations and laws applicable in your jurisdiction when using our services. If you do not agree with any part of these terms, refrain from accessing or using our platform.</p>
             </div>
 
             <div>
-              <h2 class="text-lg sm:text-xl font-semibold mb-2 text-gold-600">Products</h2>
+              <h2 class="text-lg sm:text-xl font-semibold mb-2 text-gold-600">Product Information and User Responsibility</h2>
 
-              <p class="mb-5 text-gray-400">All products and services are delivered by Preline electronically and you
-                can access your downloads from your profile page.</p>
+              <p class="mb-5 text-gray-400">At Coinluxe, we strive to provide accurate and up-to-date information, but we can't guarantee that all content will be error-free or entirely current. Users are encouraged to cross-verify any information provided on our platform before making any significant decisions based on that material.</p>
 
-              <p class="text-gray-400">Preline is not responsible for any technological delays beyond our control. If
-                your spam blocker blocks our emails from reaching you or you do not provide a valid email address where
-                you can be reachable then you can access your download from the Downloads page.</p>
+              <p class="text-gray-400">It's important to note that our product availability may be limited, and certain products may have specific usage policies or restrictions. Additionally, any links to third-party sites provided on Coinluxe are for convenience, and users should be aware that these external links operate independently, and we hold no responsibility for their content or actions. We advise users to proceed with caution and understand the terms of those external websites before engaging with them.</p>
             </div>
 
             <div>
-              <h2 class="text-lg sm:text-xl font-semibold mb-2 text-gold-600">Security</h2>
+              <h2 class="text-lg sm:text-xl font-semibold mb-2 text-gold-600">Ordering and Usage Policies</h2>
 
-              <p class="text-gray-400">Preline does not process any order payments through the website. All payments
-                are processed securely through online payment provider (e.g. PayPal, Stripe), a third party online payment
-                provider. Feel free to contact us about our security policies.</p>
+              <p class="text-gray-400">Placing orders on Coinluxe is subject to product availability and may have quantity limitations. Accuracy in providing billing and account information is crucial. Users are responsible for ensuring the accuracy of their details to facilitate smooth transactions.</p>
+            
+              <p class="text-gray-400">It's important to understand that while we strive for accuracy in representing product images, actual colors may vary due to device displays. Moreover, links to third-party sites provided on Coinluxe are used at the user's discretion, and Coinluxe holds no liability for the outcomes or actions on these external sites.</p>
             </div>
 
             <div>
-              <h2 class="text-lg sm:text-xl font-semibold mb-2 text-gold-600">Ownership</h2>
+              <h2 class="text-lg sm:text-xl font-semibold mb-2 text-gold-600">User Conduct and Liability</h2>
 
-              <p class="text-gray-400">Ownership of the product is governed by the usage license selected by the
-                seller.</p>
+              <p class="text-gray-400">Coinluxe requires users to adhere strictly to the Terms of Service and refrain from engaging in unlawful, abusive, or misleading activities on the platform. Users are solely responsible for their actions while using our services.</p>
+            
+              <p class="text-gray-400">Additionally, Coinluxe disclaims any liability for damages resulting from the use of our services, including but not limited to, errors, interruptions, or inaccuracies in content.</p>
             </div>
 
             <div>
-              <h2 class="text-lg sm:text-xl font-semibold mb-2 text-gold-600">Changes to terms</h2>
+              <h2 class="text-lg sm:text-xl font-semibold mb-2 text-gold-600">Legal Compliance and Dispute Resolution</h2>
 
-              <p class="text-gray-400">If we change our terms of use we will post those changes on this page.
-                Registered users will be sent an email that outlines changes made to the terms of use.</p>
+              <p class="text-gray-400">Users engaging with Coinluxe must comply with all local laws and regulations governing their use of our services. In the event of any disputes, the governing laws and jurisdiction specified in these Terms of Service will apply.</p>
+
+              <p class="text-gray-400">It's recommended to resolve any conflicts through direct communication. Should the need arise, mediation and arbitration processes are available for dispute resolution in accordance with the specified legal procedures and laws.</p>
             </div>
           </div>
         </div>

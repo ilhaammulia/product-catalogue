@@ -35,9 +35,9 @@
             <li v-for="file in form.files" :key="file"
               class="flex items-center gap-x-2 p-3 text-sm font-semibold rounded-md bg-dark-secondary border border-gray-50/10 text-gray-300">
               <div class="w-full flex justify-between truncate">
-                <a href="" target="_blank" class="me-3 flex-1 w-0 truncate">
+                <Link href="" target="_blank" class="me-3 flex-1 w-0 truncate">
                   {{ file.name }}
-                </a>
+                </Link>
                 <button type="button" @click="handleDeleteFile(file)" class="flex items-center gap-x-2 whitespace-nowrap">
                   <TrashIcon class="w-4 h-4 text-red-500" />
                 </button>
@@ -83,10 +83,7 @@
         <div class="mt-4">
           <label for="product-description" class="block text-sm font-medium mb-2 text-gray-400">Product
             Description</label>
-          <textarea id="product-description" rows="5" v-model="form.description"
-            :class="{ 'border-red-600': $page.props.errors.description && !form.description }"
-            class="block w-full border-gray-50/20 bg-dark-primary shadow-sm rounded-s-md text-sm text-white focus:z-10 focus:border-gray-500 focus:ring-gray-500 disabled:opacity-50 disabled:pointer-events-none"
-            placeholder="Product Description"></textarea>
+          <Editor v-model="form.description" editorStyle="height: 320px;" :class="{ 'border-red-600': $page.props.errors.description && !form.description }" />
           <p v-if="$page.props.errors.description && !form.description" class="mt-2 text-sm text-red-600">{{
             $page.props.errors.description }}</p>
         </div>
@@ -167,20 +164,22 @@
 import AppLayout from '@/Layouts/AppLayout.vue';
 import AdminSidebar from '@/Components/AdminSidebar.vue';
 import CategoryModal from '@/Components/CategoryModal.vue';
-import { Head, useForm, } from '@inertiajs/vue3';
+import { Head, useForm, Link } from '@inertiajs/vue3';
 import { TrashIcon, CubeIcon, LinkIcon, MinusIcon, PlusIcon, ArrowLeftIcon, } from '@heroicons/vue/20/solid';
+
+import Editor from 'primevue/editor';
 
 import ScrollPanel from 'primevue/scrollpanel';
 import MultiSelect from 'primevue/multiselect';
 import Dropdown from 'primevue/dropdown';
-import "primevue/resources/themes/tailwind-light/theme.css";
+import "primevue/resources/themes/mdc-dark-deeppurple/theme.css";
 
 
 export default {
   components: {
     AppLayout,
-    AdminSidebar,
-    Head, CategoryModal,
+    AdminSidebar, Link,
+    Head, CategoryModal, Editor,
     TrashIcon, CubeIcon, LinkIcon, MinusIcon, PlusIcon, ArrowLeftIcon,
     MultiSelect, ScrollPanel, Dropdown,
   },

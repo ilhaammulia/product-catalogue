@@ -13,57 +13,16 @@
         <div class="md:max-w-screen-sm lg:max-w-[992px] px-4 sm:px-6 lg:px-8 pb-12 md:pt-6 sm:pb-20 mx-auto">
           <div class="grid gap-4 md:gap-8">
             <div>
-              <h2 class="text-lg sm:text-xl font-semibold mb-2 text-gold-600">General Terms</h2>
+              <p class="mb-5 text-gray-400">Coinluxe is a premier online platform at the intersection of luxury goods and cryptocurrency. Our platform was founded on the belief that discerning consumers should have a seamless, secure, and sophisticated space to access high-end luxury products using digital currency.</p>
 
-              <p class="mb-5 text-gray-400">By accessing and placing an order with Preline, you confirm that you are
-                in agreement with and bound by the terms and conditions contained in the Terms Of Use outlined below.
-                These terms apply to the entire website and any email or other type of communication between you and
-                Preline.</p>
+              <p class="mb-5 text-gray-400">At Coinluxe, we've curated a handpicked selection of exquisite items, ranging from fine watches and jewelry to rare collectibles, all from globally renowned brands. Our mission is to bridge the gap between traditional luxury retail and the evolving landscape of digital currencies.</p>
 
-              <p class="mb-5 text-gray-400">Under no circumstances shall Preline team be liable for any direct,
-                indirect, special, incidental or consequential damages, including, but not limited to, loss of data or
-                profit, arising out of the use, or the inability to use, the materials on this site, even if Preline team
-                or an authorized representative has been advised of the possibility of such damages. If your use of
-                materials from this site results in the need for servicing, repair or correction of equipment or data, you
-                assume any costs thereof.</p>
+              <p class="mb-5 text-gray-400">We take pride in providing a distinctive shopping experience that combines luxury, convenience, and cutting-edge technology. Our commitment to excellence extends beyond the products we offer; it encompasses the assurance of a secure and transparent transactional environment for our valued customers.</p>
 
-              <p class="text-gray-400">Preline will not be responsible for any outcome that may occur during the
-                course of usage of our resources. We reserve the rights to change prices and revise the resources usage
-                policy in any moment.</p>
-            </div>
+              <p class="mb-5 text-gray-400">With a team dedicated to innovation and customer satisfaction, Coinluxe continues to redefine the paradigms of luxury shopping. Whether you're an aficionado of timeless elegance or seeking unique investment opportunities, Coinluxe is your gateway to a world where luxury meets the future of commerce.</p>
 
-            <div>
-              <h2 class="text-lg sm:text-xl font-semibold mb-2 text-gold-600">Products</h2>
-
-              <p class="mb-5 text-gray-400">All products and services are delivered by Preline electronically and you
-                can access your downloads from your profile page.</p>
-
-              <p class="text-gray-400">Preline is not responsible for any technological delays beyond our control. If
-                your spam blocker blocks our emails from reaching you or you do not provide a valid email address where
-                you can be reachable then you can access your download from the Downloads page.</p>
-            </div>
-
-            <div>
-              <h2 class="text-lg sm:text-xl font-semibold mb-2 text-gold-600">Security</h2>
-
-              <p class="text-gray-400">Preline does not process any order payments through the website. All payments
-                are processed securely through online payment provider (e.g. PayPal, Stripe), a third party online payment
-                provider. Feel free to contact us about our security policies.</p>
-            </div>
-
-            <div>
-              <h2 class="text-lg sm:text-xl font-semibold mb-2 text-gold-600">Ownership</h2>
-
-              <p class="text-gray-400">Ownership of the product is governed by the usage license selected by the
-                seller.</p>
-            </div>
-
-            <div>
-              <h2 class="text-lg sm:text-xl font-semibold mb-2 text-gold-600">Changes to terms</h2>
-
-              <p class="text-gray-400">If we change our terms of use we will post those changes on this page.
-                Registered users will be sent an email that outlines changes made to the terms of use.</p>
-            </div>
+              <p class="mb-5 text-gray-400">Welcome to Coinluxe, where sophistication meets blockchain technology, and luxury becomes digital.</p>
+            </div>        
           </div>
         </div>
     </main>

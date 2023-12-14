@@ -7,12 +7,34 @@ use App\Models\Category;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
 use App\Models\Product;
+use App\Models\RequestTicket;
+use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
 
 class LandingController extends Controller
 {
+    public function home()
+    {
+        $products = Product::popular()->get();
+        $products = $products->map(function ($product) {
+            $image = $product->attachments?->first();
+            return [
+                'id' => $product->id,
+                'name' => $product->name,
+                'description' => $product->description,
+                'slug' => $product->slug,
+                'price' => $product->price,
+                'image' => $image ? Storage::url($image->path) : '/assets/img/product-placeholder.png',
+            ];
+        });
+        return Inertia::render('Landing/Home', [
+            'products' => $products,
+        ]);
+    }
+
     public function products(Request $request)
     {
         $brands = Brand::all();
@@ -84,7 +106,27 @@ class LandingController extends Controller
 
     public function dashboard()
     {
-        return Inertia::render('Admin/Dashboard');
+        $productQuery = new Product();
+        $total_products = $productQuery->count();
+        $total_stocks = $productQuery->sum('stock');
+
+        $notifications = RequestTicket::whereDate('created_at', Carbon::now())->get()->map(function ($notif) {
+            return [
+                'name' => $notif->name,
+                'message' => $notif->message,
+                'created_at' => $notif->created_at->format('d-m-Y')
+            ];
+        });
+
+        return Inertia::render('Admin/Dashboard', [
+            'meta' => [
+                'total_products' => $total_products,
+                'total_stocks' => $total_stocks,
+                'total_tickets' => RequestTicket::count(),
+                'total_users' => User::count(),
+            ],
+            'notifications' => $notifications
+        ]);
     }
 
     public function fetch(Request $request)

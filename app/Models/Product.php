@@ -131,4 +131,11 @@ class Product extends Model
 
         return $flatRelatedProducts->unique('id')->values()->all();
     }
+
+    public function scopePopular($query)
+    {
+        return $query->inRandomOrder()
+            ->orderBy('updated_at', 'desc')
+            ->limit(5);
+    }
 }

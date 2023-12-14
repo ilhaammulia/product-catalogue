@@ -38,9 +38,9 @@
         <Column field="message" header="Message" class="max-w-sm px-8 py-6"></Column>
         <Column field="product" header="Product" class="px-8 py-6">
           <template #body="props">
-            <a v-if="props.data.product"
+            <Link v-if="props.data.product"
               class="bg-gold-600 text-gray-300 text-sm font-medium me-2 px-2.5 py-0.5 rounded-full"
-              :href="props.data.product.link">{{ props.data.product.name }}</a>
+              :href="props.data.product.link">{{ props.data.product.name }}</Link>
           </template>
         </Column>
         <Column field="created_at" header="Created At" sortable></Column>
@@ -60,9 +60,9 @@
 <script>
 import AppLayout from '@/Layouts/AppLayout.vue';
 import SmallCard from '@/Components/SmallCard.vue';
-import { Head } from '@inertiajs/vue3';
-import { MagnifyingGlassIcon, EnvelopeIcon } from '@heroicons/vue/24/outline';
-import { TrashIcon } from '@heroicons/vue/24/solid';
+import { Head, Link } from '@inertiajs/vue3';
+import { MagnifyingGlassIcon } from '@heroicons/vue/24/outline';
+import { TrashIcon, EnvelopeIcon } from '@heroicons/vue/24/solid';
 import { Notify } from 'notiflix';
 
 import { FilterMatchMode } from 'primevue/api';
@@ -78,7 +78,7 @@ import "primevue/resources/themes/mdc-dark-deeppurple/theme.css";
 export default {
   components: {
     AppLayout,
-    SmallCard,
+    SmallCard, Link,
     Head, MagnifyingGlassIcon, EnvelopeIcon, TrashIcon,
     DataTable, Column, InputText, ConfirmDialog
   },

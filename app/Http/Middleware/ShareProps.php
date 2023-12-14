@@ -18,7 +18,7 @@ class ShareProps
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $rates = ExchangeRate::whereIn('currency', ['BTC', 'BUSD', 'ETH', 'DOGE', 'LTC', 'USDT'])->get()->map(function ($rate) {
+        $rates = ExchangeRate::whereIn('currency', ['BTC', 'USD', 'ETH', 'DOGE', 'LTC', 'USDT'])->get()->map(function ($rate) {
             return [
                 'iconTag' => $rate->currency,
                 'text' => $rate->currency,

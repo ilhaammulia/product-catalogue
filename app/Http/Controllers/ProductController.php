@@ -167,7 +167,11 @@ class ProductController extends Controller
     {
         DB::beginTransaction();
         try {
-            if (is_string($request->brand_id)) {
+            $is_brand_exists = Brand::where('name', $request->brand_id)->first();
+
+            if ($is_brand_exists) {
+                $brand = $is_brand_exists;
+            } else if (is_string($request->brand_id)) {
                 $brand = Brand::create(['name' => $request->brand_id]);
             } else {
                 $brand = ['id' => $request->brand_id];
@@ -176,7 +180,6 @@ class ProductController extends Controller
             $product->update([
                 'name' => $request->name,
                 'description' => $request->description,
-                'slug' => Str::slug(now()->timestamp . ' ' . $request->name),
                 'price' => $request->price,
                 'currency' => $request->currency,
                 'stock' => $request->stock,

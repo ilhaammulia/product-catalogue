@@ -15,19 +15,12 @@
           </div>
           <div class="w-full px-4 md:w-1/2 ">
             <div class="lg:pl-20">
-              <div class="mb-8 ">
+              <div class="mb-8 mt-8">
                 <span v-if="product.brand" class="text-lg font-semibold text-gold-600 uppercase">{{ product.brand.name }}</span>
                 <h2 class="max-w-xl mt-2 mb-6 text-2xl font-bold md:text-4xl text-gray-300">{{ product.name }}</h2>
-                <p v-if="product.description.length > 200" class="max-w-md mb-8 text-gray-300 font-medium text-justify">
-                  {{ showAll ? product.description : product.description.slice(0, 200) + '...' }}
-                  <span @click="showAll = !showAll" class="underline cursor-pointer">{{ showAll ? 'Show Less' : 'Show More' }}</span>
-                </p>
-                <p v-else class="max-w-md mb-8 text-gray-300 font-medium text-justify">
-                  {{ product.description }}
-                </p>
+                <div v-html="product.description" class="max-w-md mb-8 text-gray-300 font-medium text-justify"></div>
                 <p class="inline-block mb-8 text-lg font-semibold text-gold-500 ">
-                  <span>Ƀ {{ (product.price * $store.state.currency.value).toFixed(4) }} {{ $store.state.currency.text
-                  }}</span>
+                  <span>Ƀ {{ (product.price * $store.state.currency.value).toFixed(4) }} {{ $store.state.currency.text}}</span>
                 </p>
               </div>
               <div class="flex flex-wrap items-center -mx-4 ">
@@ -50,14 +43,14 @@
           <div class="w-full hidden sm:flex justify-center items-center h-full rounded-sm overflow-hidden mb-12">
             <img class="w-full h-full" src="/assets/img/banner/banner.png" />
           </div>
-          <h1 class="mt-2 mb-6 text-xl font-bold md:text-2xl text-gray-300">Related Products</h1>
+          <h1 v-if="related_products.length" class="mt-2 mb-6 text-xl font-bold md:text-2xl text-gray-300">Related Products</h1>
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 xl:px-0 w-fit mx-auto">
             <CardProduct v-for="product in related_products" :key="product" :product="product" />
           </div>
           <div class="flex justify-center mt-12">
-            <a :href="route('landing.products')" class="py-4 px-12 text-white font-semibold rounded-full border border-gold-600 hover:bg-gold-600 hover:text-gray-100 cursor-pointer">
+            <Link :href="route('landing.products')" class="py-4 px-12 text-white font-semibold rounded-full border border-gold-600 hover:bg-gold-600 hover:text-gray-100 cursor-pointer">
               Browse More
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -69,13 +62,14 @@
 import AppLayout from '@/Layouts/AppLayout.vue';
 import CardProduct from '@/Components/CardProduct.vue';
 import ContactModal from '@/Components/ContactModal.vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 import ProductCarousel from '@/Components/ProductCarousel.vue';
 
 export default {
   components: {
     AppLayout,
     Head,
+    Link,
     ProductCarousel,
     CardProduct,
     ContactModal

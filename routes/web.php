@@ -21,14 +21,7 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Landing/Home', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-})->name('landing.home');
+Route::get('/', [LandingController::class, 'home'])->name('landing.home');
 
 Route::prefix('products')->group(function () {
     Route::get('/', [LandingController::class, 'products'])->name('landing.products');
@@ -64,6 +57,13 @@ Route::middleware([
         Route::get('/{id}', [ProductController::class, 'edit'])->name('admin.product.edit');
         Route::delete('/{id}', [ProductController::class, 'destroy'])->name('admin.product.delete');
         Route::post('/{product}', [ProductController::class, 'update'])->name('admin.product.update');
+    });
+
+    Route::prefix('/admin/users')->group(function () {
+        Route::get('/', [UserController::class, 'index'])->name('admin.users');
+        Route::post('/', [UserController::class, 'store'])->name('admin.user.store');
+        Route::post('/{id}', [UserController::class, 'update'])->name('admin.user.update');
+        Route::delete('/{id}', [UserController::class, 'destroy'])->name('admin.user.delete');
     });
 
     Route::prefix('/admin/tickets')->group(function () {

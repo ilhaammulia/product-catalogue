@@ -22,7 +22,7 @@
 
             <h2 class="mt-4 text-base font-medium text-gray-300">Email</h2>
             <p class="mt-2 text-sm text-gray-500">Our friendly team is here to help.</p>
-            <p class="mt-2 text-sm text-gold-500">hello@merakiui.com</p>
+            <p class="mt-2 text-sm text-gold-500">support@coinluxe.io</p>
           </div>
 
           <div>
@@ -37,7 +37,7 @@
 
             <h2 class="mt-4 text-base font-medium text-gray-300">Live chat</h2>
             <p class="mt-2 text-sm text-gray-500">Our friendly team is here to help.</p>
-            <p class="mt-2 text-sm text-gold-500">Start new chat</p>
+            <p class="mt-2 text-sm text-gold-500">Send message here</p>
           </div>
 
           <div>
@@ -52,7 +52,7 @@
 
             <h2 class="mt-4 text-base font-medium text-gray-300">Office</h2>
             <p class="mt-2 text-sm text-gray-500">Come say hello at our office HQ.</p>
-            <p class="mt-2 text-sm text-gold-500">100 Smith Street Collingwood VIC 3066 AU</p>
+            <p class="mt-2 text-sm text-gold-500">201 N Los Angeles St, Los Angeles, CA 90012-3303, United States</p>
           </div>
 
           <div>
@@ -66,7 +66,7 @@
 
             <h2 class="mt-4 text-base font-medium text-gray-300">Phone</h2>
             <p class="mt-2 text-sm text-gray-500">Mon-Fri from 8am to 5pm.</p>
-            <p class="mt-2 text-sm text-gold-500">+1 (555) 000-0000</p>
+            <p class="mt-2 text-sm text-gold-500">(909) 206-2463</p>
           </div>
         </div>
 

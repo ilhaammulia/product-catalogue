@@ -1,5 +1,5 @@
 <template>
-  <a :href="route('landing.product.detail', {slug: product.slug})"
+  <Link :href="route('landing.product.detail', {slug: product.slug})"
     class="relative flex flex-col text-gray-300  bg-dark-secondary shadow-md w-full rounded-xl bg-clip-border">
     <div class="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white h-60 rounded-xl bg-clip-border">
       <img
@@ -21,12 +21,16 @@
         Ƀ {{ ((product.price) * $store.state.currency.value).toFixed(4) }} {{ $store.state.currency.text }}
       </p>
     </div>
-  </a>
+  </Link>
 </template>
 
 <script>
+import { Link } from '@inertiajs/vue3';
 
 export default {
+  components: {
+    Link
+  },
   props: {
     product: {
       type: Object,

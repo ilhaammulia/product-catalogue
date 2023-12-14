@@ -23,10 +23,10 @@
           <p class="font-semibold text-gray-100">Products</p>
 
           <div class="flex flex-col items-start mt-5 space-y-2">
-            <a :href="route('landing.home')"
-              class="text-gray-300 transition-colors duration-300 hover:underline hover:text-gold-500">Home</a>
-            <a :href="route('landing.products')"
-              class="text-gray-300 transition-colors duration-300 hover:underline hover:text-gold-500">Browse</a>
+            <Link :href="route('landing.home')"
+              class="text-gray-300 transition-colors duration-300 hover:underline hover:text-gold-500">Home</Link>
+            <Link :href="route('landing.products')"
+              class="text-gray-300 transition-colors duration-300 hover:underline hover:text-gold-500">Browse</Link>
           </div>
         </div>
 
@@ -34,12 +34,12 @@
           <p class="font-semibold text-gray-100">Company</p>
 
           <div class="flex flex-col items-start mt-5 space-y-2">
-            <a :href="route('landing.about')"
-              class="text-gray-300 transition-colors duration-300 hover:underline hover:text-gold-500">About Us</a>
-            <a :href="route('landing.terms')"
-              class="text-gray-300 transition-colors duration-300 hover:underline hover:text-gold-500">Term of Service</a>
-            <a :href="route('landing.contact')"
-            class="text-gray-300 transition-colors duration-300 hover:underline hover:text-gold-500">Contact Us</a>
+            <Link :href="route('landing.about')"
+              class="text-gray-300 transition-colors duration-300 hover:underline hover:text-gold-500">About Us</Link>
+            <Link :href="route('landing.terms')"
+              class="text-gray-300 transition-colors duration-300 hover:underline hover:text-gold-500">Term of Service</Link>
+            <Link :href="route('landing.contact')"
+            class="text-gray-300 transition-colors duration-300 hover:underline hover:text-gold-500">Contact Us</Link>
           </div>
         </div>
       </div>
@@ -47,13 +47,12 @@
       <hr class="my-6 border-gray-700 md:my-8">
 
       <div class="flex items-center justify-center sm:justify-between flex-col sm:flex-row gap-2">
-        <a class="inline-flex items-center gap-x-2 text-xl font-semibold text-gold-600" href="#">
-          <!-- <img class="w-10 h-auto" src="../docs/assets/img/logo/logo-short.png" alt="Logo"> -->
-          Brand
-        </a>
+        <Link class="inline-flex items-center gap-x-2 text-xl font-semibold text-gold-600" :href="route('landing.home')">
+          Coinluxe
+        </Link>
 
         <div class="flex justify-between items-center">
-          <p class="text-gray-300 font-medium">CopyRight © 2023 brand.com. All Rights Reserved.</p>
+          <p class="text-gray-300 font-medium">CopyRight © 2023 coinluxe.io. All Rights Reserved.</p>
       </div>
     </div>
   </div>
@@ -63,8 +62,12 @@
 <script>
 import { Notify } from 'notiflix';
 import axios from 'axios';
+import { Link } from '@inertiajs/vue3';
 
 export default {
+  components: {
+    Link
+  },
   data() {
     return {
       email: null,
