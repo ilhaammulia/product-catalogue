@@ -59,13 +59,19 @@ class Product extends Model
         $maxPrice = request('max_price');
 
         if ($minPrice && $minPrice['value']) {
-            $rate = ExchangeRate::where('currency', $minPrice['currency'])->first();
-            $query->where('price', '>=', $minPrice['value'] * ($rate ? $rate->value : 1));
+            $rate = ExchangeRate::where([
+                'currency' => $minPrice['currency'],
+                'origin_currency' => 'USD'
+            ])->first();
+            $query->where(DB::raw('price * IFNULL(' . $rate->value . ', 1)'), '>=', $minPrice['value']);
         }
 
         if ($maxPrice && $maxPrice['value']) {
-            $rate = ExchangeRate::where('currency', $maxPrice['currency'])->first();
-            $query->where('price', '<=', $maxPrice['value'] * ($rate ? $rate->value : 1));
+            $rate = ExchangeRate::where([
+                'currency' => $maxPrice['currency'],
+                'origin_currency' => 'USD'
+            ])->first();
+            $query->where(DB::raw('price * IFNULL(' . $rate->value . ', 1)'), '<=', $maxPrice['value']);
         }
 
         if (request('search')) {

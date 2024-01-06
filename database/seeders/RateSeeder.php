@@ -14,7 +14,7 @@ class RateSeeder extends Seeder
      */
     public function run(): void
     {
-        $response = Http::get("https://api.coinbase.com/v2/exchange-rates?currency=BTC")->object();
+        $response = Http::get("https://api.coinbase.com/v2/exchange-rates?currency=USD")->object();
         foreach ($response->data->rates as $currency => $value) {
             ExchangeRate::updateOrCreate(
                 ['currency' => $currency, 'origin_currency' => $response->data->currency],

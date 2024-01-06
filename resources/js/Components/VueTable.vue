@@ -34,7 +34,7 @@
     </Column>
     <Column field="price" header="Price" sortable class="max-w-sm px-8 py-6">
       <template #body="props">
-        Ƀ {{ props.data.price }} BTC
+        $ {{ props.data.price }} USD
       </template>
     </Column>
     <Column field="stock" header="Stock" sortable class="px-8 py-6"></Column>

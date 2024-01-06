@@ -42,17 +42,19 @@
         <div class="text-700 text-sm mb-6">Dive into curated categories for luxury aficionados seeking sophistication.</div>
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           <div v-for="cat in categories" :key="cat" class=" cursor-pointer text-gray-400 transition duration-100 hover:text-gold-400">
-            <Link :href="route('landing.products')" class="group relative block h-96 overflow-hidden">
-              <img
-                :src="cat.img"
-                loading="lazy" alt=""
-                class="h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" />
-            </Link>
+            <Link :href="route('landing.products')">
+              <div class="group relative block h-96 overflow-hidden">
+                <img
+                  :src="cat.img"
+                  loading="lazy" alt=""
+                  class="h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" />
+              </div>
 
-            <div class="py-4 px-2">
-              <p class="lg:text-lg font-bold">{{ cat.title }}</p>
-              <p class="text-sm">{{ cat.desc }}</p>
-            </div>
+              <div class="py-4 px-2">
+                <p class="lg:text-lg font-bold">{{ cat.title }}</p>
+                <p class="text-sm">{{ cat.desc }}</p>
+              </div>
+            </Link>
           </div>
         </div>
       </section>

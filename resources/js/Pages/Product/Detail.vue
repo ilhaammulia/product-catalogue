@@ -40,9 +40,6 @@
           </div>
         </div>
         <div class="mt-24 mx-auto">
-          <div class="w-full hidden sm:flex justify-center items-center h-full rounded-sm overflow-hidden mb-12">
-            <img class="w-full h-full" src="/assets/img/banner/banner.png" />
-          </div>
           <h1 v-if="related_products.length" class="mt-2 mb-6 text-xl font-bold md:text-2xl text-gray-300">Related Products</h1>
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 xl:px-0 w-fit mx-auto">
             <CardProduct v-for="product in related_products" :key="product" :product="product" />

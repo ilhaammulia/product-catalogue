@@ -12,9 +12,7 @@
           {{ product.name }}
         </p>
       </div>
-      <p class="font-sans text-sm antialiased font-normal leading-normal text-gray-400 line-clamp-2">
-        {{ product.description }}
-      </p>
+      <div v-html="product.description" class="font-sans text-sm antialiased font-normal leading-normal text-gray-400 line-clamp-2"></div>
     </div>
     <div class="p-6 pt-0">
       <p class="text-sm font-medium text-gray-300">
